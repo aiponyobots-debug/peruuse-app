@@ -1,33 +1,57 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import { enableScreens } from 'react-native-screens';
+enableScreens(false);
 
-export default function App() {
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { registerRootComponent } from 'expo';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet } from 'react-native';
+
+import HomeScreen from './app/(tabs)/index';
+import DiscoverScreen from './app/(tabs)/discover';
+import AddScreen from './app/(tabs)/add';
+import NotificationsScreen from './app/(tabs)/notifications';
+import ProfileScreen from './app/(tabs)/profile';
+
+const Tab = createBottomTabNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.logo}>HAUL</Text>
-      <Text style={styles.tagline}>Browse what your friends buy.</Text>
+    <NavigationContainer>
       <StatusBar style="dark" />
-    </View>
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: styles.tabBar,
+          tabBarShowLabel: true,
+          tabBarLabelStyle: styles.tabLabel,
+          tabBarActiveTintColor: '#2D4A28',
+          tabBarInactiveTintColor: '#8A8680',
+        }}
+      >
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Discover" component={DiscoverScreen} />
+        <Tab.Screen name="Add" component={AddScreen} />
+        <Tab.Screen name="Activity" component={NotificationsScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  tabBar: {
     backgroundColor: '#FAFAF8',
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderTopColor: '#E8E6E2',
+    borderTopWidth: 1,
+    height: 80,
+    paddingBottom: 20,
+    paddingTop: 10,
   },
-  logo: {
-    fontSize: 48,
-    fontWeight: '700',
-    color: '#1A1815',
-    letterSpacing: 4,
-  },
-  tagline: {
-    fontSize: 16,
-    color: '#8A8680',
-    marginTop: 12,
-    fontStyle: 'italic',
+  tabLabel: {
+    fontSize: 11,
+    fontWeight: '500',
   },
 });
+
+registerRootComponent(App);

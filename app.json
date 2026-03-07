@@ -6,7 +6,6 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": false,
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -22,9 +21,6 @@
         "backgroundColor": "#FAFAF8"
       },
       "package": "com.aiponyobots.haulapp"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     },
     "scheme": "haul"
   }
