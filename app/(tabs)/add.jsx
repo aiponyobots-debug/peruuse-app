@@ -76,10 +76,11 @@ export default function AddPost() {
         } catch {}
       });
     } catch (e) {
+      console.log('[add] loadEmails error:', e.message);
       if (e.message === 'token_expired') {
         await clearGmailToken();
-        setGmailError(true);
       }
+      setGmailError(true);
     } finally {
       setLoadingEmails(false);
     }
