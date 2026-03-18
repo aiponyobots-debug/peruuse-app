@@ -6,3 +6,4 @@ web-build/
 *.local
 .env
 lib/secrets.js
+peruuse-app/
