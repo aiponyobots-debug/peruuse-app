@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "HAUL",
-    "slug": "haul-app",
+    "name": "Peruuse",
+    "slug": "peruuse",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,15 +13,29 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.aiponyobots.haulapp"
+      "bundleIdentifier": "com.aiponyobots.nuvoapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FAFAF8"
       },
-      "package": "com.aiponyobots.haulapp"
+      "package": "com.aiponyobots.nuvoapp"
     },
-    "scheme": "haul"
+    "scheme": "peruuse",
+    "plugins": [
+      "expo-secure-store",
+      "expo-web-browser",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "87f4ead0-c147-463b-bde0-42e998684610"
+      }
+    },
+    "owner": "tesserr"
   }
 }

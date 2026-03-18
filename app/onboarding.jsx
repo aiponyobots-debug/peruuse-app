@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Switch } from '
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { Colors } from '../constants/Colors';
+import { Fonts } from '../constants/Fonts';
 
 export default function Onboarding() {
   const [step, setStep] = useState(0);
@@ -17,11 +18,19 @@ export default function Onboarding() {
   return steps[step];
 }
 
+function LogoWordmark() {
+  return (
+    <View style={styles.wordmark}>
+      <Text style={styles.logo}>peruuse</Text>
+    </View>
+  );
+}
+
 function SplashStep({ onNext }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.center}>
-        <Text style={styles.logo}>HAUL</Text>
+        <LogoWordmark />
         <Text style={styles.tagline}>Browse what your friends buy.</Text>
       </View>
       <TouchableOpacity style={styles.button} onPress={onNext}>
@@ -35,7 +44,7 @@ function SignUpStep({ onNext }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.top}>
-        <Text style={styles.logo}>HAUL</Text>
+        <LogoWordmark />
         <Text style={styles.heading}>Create your account</Text>
       </View>
       <View style={styles.authButtons}>
@@ -59,7 +68,7 @@ function GmailStep({ onNext }) {
       <View style={styles.top}>
         <Text style={styles.heading}>Connect Gmail</Text>
         <Text style={styles.body}>
-          HAUL only reads order confirmation emails — nothing else. Your inbox stays private.
+          Peruuse only reads order confirmation emails — nothing else. Your inbox stays private.
         </Text>
       </View>
       <TouchableOpacity style={styles.button} onPress={onNext}>
@@ -92,7 +101,7 @@ function PrivacyStep({ autoPost, setAutoPost, onNext }) {
         </View>
       </View>
       <TouchableOpacity style={styles.button} onPress={onNext}>
-        <Text style={styles.buttonText}>Start Hauling</Text>
+        <Text style={styles.buttonText}>Start Exploring</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -115,29 +124,32 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 32,
   },
+  wordmark: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
   logo: {
-    fontFamily: 'serif',
-    fontSize: 48,
-    fontWeight: '700',
+    fontFamily: Fonts.serif,
+    fontSize: 52,
     color: Colors.text,
-    textAlign: 'center',
     letterSpacing: 4,
   },
   tagline: {
-    fontSize: 16,
+    fontFamily: Fonts.serifLightItalic,
+    fontSize: 17,
     color: Colors.textMuted,
     textAlign: 'center',
     marginTop: 12,
-    fontStyle: 'italic',
   },
   heading: {
-    fontFamily: 'serif',
+    fontFamily: Fonts.serif,
     fontSize: 28,
-    fontWeight: '700',
     color: Colors.text,
     marginBottom: 16,
   },
   body: {
+    fontFamily: Fonts.sans,
     fontSize: 15,
     color: Colors.textMuted,
     lineHeight: 22,
@@ -156,9 +168,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   authButtonText: {
+    fontFamily: Fonts.sansMedium,
     fontSize: 15,
     color: Colors.text,
-    fontWeight: '500',
   },
   button: {
     backgroundColor: Colors.accent,
@@ -168,11 +180,12 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   buttonText: {
+    fontFamily: Fonts.sansSemiBold,
     color: Colors.accentText,
     fontSize: 16,
-    fontWeight: '600',
   },
   skip: {
+    fontFamily: Fonts.sans,
     textAlign: 'center',
     color: Colors.textMuted,
     fontSize: 14,
@@ -187,11 +200,12 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   toggleLabel: {
+    fontFamily: Fonts.sansMedium,
     fontSize: 15,
     color: Colors.text,
-    fontWeight: '500',
   },
   toggleSub: {
+    fontFamily: Fonts.sans,
     fontSize: 12,
     color: Colors.textMuted,
     marginTop: 2,
